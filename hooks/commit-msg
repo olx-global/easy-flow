@@ -1,0 +1,6 @@
+#!/bin/sh
+
+branch=$(git status --porcelain -b 2| cut -c 4-)
+if [[ -n "$branch" ]]; then
+  echo "\nbranch: $branch" >> $1
+fi
