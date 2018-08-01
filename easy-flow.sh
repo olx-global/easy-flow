@@ -32,6 +32,9 @@ function easy_branch {
 		echo "ERROR: Please set JIRA_SERVER env variable. Usually org.atlassian.com" 
 		return
 	fi
+	if [ -z "$JIRA_BRANCH_SEPARATOR" ]; then
+		JIRA_BRANCH_SEPARATOR="_"
+	fi
 	POSITIONAL=()
 	TYPE="Task"
 	SUMMARY=""
@@ -110,7 +113,7 @@ function easy_branch {
 	fi
 	if [ "$DO_BRANCH" = true ]; then
 		SUMMARY_BRANCH=${SUMMARY// /_}
-		BRANCH="$ISSUE_KEY""_""$SUMMARY_BRANCH"
+		BRANCH="$ISSUE_KEY$JIRA_BRANCH_SEPARATOR$SUMMARY_BRANCH"
 		git branch $BRANCH
 		git checkout $BRANCH
 		to_in_progress $ISSUE_KEY

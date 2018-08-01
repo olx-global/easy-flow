@@ -20,6 +20,7 @@ export JIRA_KEY=[key]
 export JIRA_USER=[user]
 export JIRA_SERVER=[org].atlassian.net
 export JIRA_IN_PROGRESS_ID=get it from jira, default value if absent: 111
+export JIRA_BRANCH_SEPARATOR="/" // optional, default is _ 
 ```
 
 You might want to symlink the script:
